@@ -40,33 +40,22 @@ toggleTheme.addEventListener("click", () => {
 });
 
 // 번역 요청
+// popup.js 번역 요청 로직 수정 (가장 안정적인 무료 방식)
 translateBtn.addEventListener("click", async () => {
   const text = input.value.trim();
   if (!text) return;
 
-  const apiKey = ""; // 여기에 발급받은 키 입력
-
   try {
-    const response = await fetch(
-      `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          q: text,
-          source: sourceLang,
-          target: targetLang,
-          format: "text",
-        }),
-      },
-    );
+    result.textContent = "번역 중...";
 
+    // 구글 번역 비공식 무료 API 엔드포인트
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+
+    const response = await fetch(url);
     const data = await response.json();
-    if (data.error) {
-      result.textContent = "❌ 오류: " + data.error.message;
-    } else {
-      result.textContent = data.data.translations[0].translatedText;
-    }
+
+    // 응답 배열에서 번역된 텍스트만 추출
+    result.textContent = data[0][0][0];
   } catch (err) {
     result.textContent = "❌ 네트워크 오류";
     console.error(err);
