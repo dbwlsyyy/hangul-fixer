@@ -1,0 +1,159 @@
+:root {
+    --bg: #ffffff;
+    --text: #222;
+    --border: #ccc;
+    --accent: #111;
+    --input-bg: #f5f5f5;
+    --result-bg: #f2f2f2;
+}
+
+body.dark {
+    --bg: #1e1e1e;
+    --text: #f5f5f5;
+    --border: #444;
+    --accent: #f5f5f5;
+    --input-bg: #2a2a2a;
+    --result-bg: #2e2e2e;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    width: 320px;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 0 0 12px;
+    width: 200px;
+}
+
+#toggleTheme {
+    background: none;
+    border: none;
+    width: 30%;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background-color: var(--input-bg);
+    font-size: 14px;
+    resize: none;
+    box-sizing: border-box;
+    color: var(--text);
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background-color: var(--bg);
+}
+
+button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    background-color: var(--accent);
+    color: var(--bg);
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#resultContainer {
+    margin-top: 8px;
+    background-color: var(--result-bg);
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 8px;
+    position: relative;
+    min-height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#result {
+    margin: 0;
+    text-align: left;
+    font-size: 14px;
+    white-space: pre-wrap;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+#copyBtn {
+    width: auto;
+    font-size: 12px;
+    padding: 6px 10px;
+    background-color: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+.lang-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+#switchLangBtn {
+    font-size: 14px;
+    width: 70%;
+    padding: 6px 10px;
+    background-color: var(--accent);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#langLabel {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.input-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+
+#clearBtn {
+    font-size: 14px;
+    padding: 5px 10px;
+    background-color: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    cursor: pointer;
+}

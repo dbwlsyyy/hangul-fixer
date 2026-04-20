@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>한영 변환기</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="top-bar">
+            <h2>🌐</h2>
+            <button id="toggleTheme">◾️ Dark</button>
+        </div>
+        <div class="lang-toggle">
+            <span id="langLabel">한 ➝ 영</span>
+            <button id="switchLangBtn">🔁 전환</button>
+        </div>
+        <div>
+            <textarea
+                id="inputText"
+                placeholder="번역할 한글 입력"
+                rows="5"
+            ></textarea>
+        </div>
+        <button id="translateBtn">번역하기</button>
+        <div class="input-actions">
+            <button id="clearBtn">🧹 초기화</button>
+        </div>
+
+        <p><strong>결과:</strong></p>
+        <div id="resultContainer">
+            <p id="result"></p>
+            <button id="copyBtn">📋 복사</button>
+        </div>
+
+        <script src="popup.js"></script>
+    </body>
+</html>
