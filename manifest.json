@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Hangul Fixer",
-  "version": "1.0",
+  "version": "1.1.0",
   "description": "영어로 잘못 입력된 한글을 변환해주는 크롬 확장 프로그램",
   "permissions": ["activeTab", "storage", "clipboardWrite", "scripting"],
   "background": {

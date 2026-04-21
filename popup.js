@@ -39,25 +39,38 @@ toggleTheme.addEventListener("click", () => {
     : "◾️ Dark";
 });
 
-// 번역 요청
-// popup.js 번역 요청 로직 수정 (가장 안정적인 무료 방식)
+function extractTranslatedText(payload) {
+  const segments = Array.isArray(payload?.[0]) ? payload[0] : [];
+  return segments
+    .map((segment) => (Array.isArray(segment) ? segment[0] : ""))
+    .filter(Boolean)
+    .join("");
+}
+
+async function translateText(text) {
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Translate API failed: ${response.status}`);
+  }
+
+  const payload = await response.json();
+  const translated = extractTranslatedText(payload);
+  if (!translated) {
+    throw new Error("Translate API returned empty result");
+  }
+  return translated;
+}
+
 translateBtn.addEventListener("click", async () => {
   const text = input.value.trim();
   if (!text) return;
 
   try {
     result.textContent = "번역 중...";
-
-    // 구글 번역 비공식 무료 API 엔드포인트
-    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
-
-    const response = await fetch(url);
-    const data = await response.json();
-
-    // 응답 배열에서 번역된 텍스트만 추출
-    result.textContent = data[0][0][0];
+    result.textContent = await translateText(text);
   } catch (err) {
-    result.textContent = "❌ 네트워크 오류";
+    result.textContent = "❌ 번역 실패";
     console.error(err);
   }
 });
@@ -65,7 +78,7 @@ translateBtn.addEventListener("click", async () => {
 // 복사하기
 copyBtn.addEventListener("click", () => {
   const text = result.textContent;
-  if (text) {
+  if (text && !text.startsWith("❌") && text !== "번역 중...") {
     navigator.clipboard.writeText(text);
     copyBtn.textContent = "✅ 복사됨!";
     setTimeout(() => (copyBtn.textContent = "📋 복사"), 1500);
