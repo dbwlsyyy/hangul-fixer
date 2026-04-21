@@ -1,38 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>한영 변환기</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-        <div class="top-bar">
-            <h2>🌐</h2>
-            <button id="toggleTheme">◾️ Dark</button>
-        </div>
-        <div class="lang-toggle">
-            <span id="langLabel">한 ➝ 영</span>
-            <button id="switchLangBtn">🔁 전환</button>
-        </div>
-        <div>
-            <textarea
-                id="inputText"
-                placeholder="번역할 한글 입력"
-                rows="5"
-            ></textarea>
-        </div>
-        <button id="translateBtn">번역하기</button>
-        <div class="input-actions">
-            <button id="clearBtn">🧹 초기화</button>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>🌐 간편 번역기</title>
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="title">🌐 간편 번역기</h1>
+      <button
+        id="toggleTheme"
+        class="icon-btn"
+        title="테마 변경"
+      ></button>
+    </header>
 
-        <p><strong>결과:</strong></p>
-        <div id="resultContainer">
-            <p id="result"></p>
-            <button id="copyBtn">📋 복사</button>
-        </div>
+    <main class="container">
+      <div class="lang-row">
+        <span
+          id="langLabel"
+          class="lang-text"
+          >한 ➝ 영</span
+        >
+        <button
+          id="switchLangBtn"
+          class="text-link-btn"
+        >
+          전환
+        </button>
+      </div>
 
-        <script src="popup.js"></script>
-    </body>
+      <div class="input-group">
+        <textarea
+          id="inputText"
+          placeholder="입력하세요..."
+          rows="5"
+        ></textarea>
+        <div class="input-footer">
+          <button
+            id="clearBtn"
+            class="sub-btn"
+          >
+            ✕ 지우기
+          </button>
+        </div>
+      </div>
+
+      <button
+        id="translateBtn"
+        class="primary-btn"
+      >
+        번역하기
+      </button>
+
+      <section class="result-section">
+        <div class="result-header">
+          <span class="label">결과</span>
+        </div>
+        <div
+          id="resultContainer"
+          class="result-box"
+        >
+          <p id="result"></p>
+          <button
+            id="copyBtn"
+            class="copy-btn"
+          >
+            복사
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
 </html>
