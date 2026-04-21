@@ -16,7 +16,7 @@
       "description": "한영 변환"
     }
   },
-  "host_permissions": ["http://*/*", "https://libretranslate.de/"],
+  "host_permissions": ["http://*/*", "https://translate.googleapis.com/*"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": "logo.png"
